@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Email {
 
-    // Atrtributes
+    // Attributes
     private String firstName;
     private String lastName;
     private String password;
@@ -10,7 +10,8 @@ public class Email {
     private String email;
     private int mailboxCapacity;
     private String alternateEmail;
-    private String company;
+    private String companySuffix = "company.com";
+    private  int defaultPassLength = 8;
 
     // Constructor to receive the first name and last name
     public Email(String firstName, String lastName) {
@@ -24,6 +25,13 @@ public class Email {
         // Set the department
         setDepartment();
         System.out.println("Department: " + this.department);
+        this.password = randomPassword(defaultPassLength);
+        System.out.println("Your password is: " + password);
+
+        // Generate email
+        email = (firstName + (".")+ lastName + "@" + (department.isEmpty() ? companySuffix : department + "."
+                + companySuffix)).toLowerCase();
+        System.out.println("Your email is: "+ email);
 
     }
 
