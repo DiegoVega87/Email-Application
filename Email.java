@@ -8,10 +8,9 @@ public class Email {
     private String password;
     private String department;
     private String email;
-    private int mailboxCapacity;
+    private int defaultMailboxCapacity;
     private String alternateEmail;
-    private String companySuffix = "company.com";
-    private  int defaultPassLength = 8;
+    private  int defaultPassLength;
 
     // Constructor to receive the first name and last name
     public Email(String firstName, String lastName) {
@@ -21,6 +20,8 @@ public class Email {
         } else {
             System.out.println("Error: First name and last name can't be null");
         }
+        defaultPassLength = 8;
+        defaultMailboxCapacity = 500;
 
         // Set the department
         setDepartment();
@@ -29,6 +30,7 @@ public class Email {
         System.out.println("Your password is: " + password);
 
         // Generate email
+        String companySuffix = "company.com";
         email = (firstName + (".")+ lastName + "@" + (department.isEmpty() ? companySuffix : department + "."
                 + companySuffix)).toLowerCase();
         System.out.println("Your email is: "+ email);
@@ -77,11 +79,52 @@ public class Email {
     }
 
     // Set the mailbox capacity
-
+    public void setDefaultMailboxCapacity(int capacity){
+        if(capacity > 500){
+            this.defaultMailboxCapacity = capacity;
+        }else{
+            System.out.println("Error: Capacity cannot go under 500Mb");
+        }
+    }
     // Set the alternate email
 
+    public void setAlternateEmail(String alternateEmail) {
+        while (!alternateEmail.matches("^[a-z].*[0-9._]*@.[a-z]*\\.[a-z]{2,3}$")){
+            System.out.println("ERROR: Invalid alternate email address.\nPlease provide a valid one");
+        }
+        this.alternateEmail = alternateEmail;
+    }
     // Change the password
+    public void setPassword(String newPassword){
+        if(!newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_]).{8,}")){
+            System.out.println("""
+                    ERROR: Please enter a valid password with
+                    At least 1 uppercase letter
+                    At least 1 lowercase letter
+                    At least 1 special character: !@#$%^&*_
+                    At least 8 characters long
+                    """);
+            System.out.println("Password not changed!");
+        }else {
+            password = newPassword;
+            System.out.println("Password changed successfully");
+        }
+    }
+    // Getters
 
-    // Getters and Setters
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+    public int getMailboxCapacity(){
+        return defaultMailboxCapacity;
+    }
 
 }
