@@ -3,13 +3,19 @@ import java.util.Scanner;
 public class EmailApp {
 
     public static void main(String[] args) {
-        Email em1 = new Email("John", "Smith");
+        Email email = new Email("John", "Smith");
+        System.out.println(email.showInfo());
 
-        em1.setAlternateEmail("jacob");
-        System.out.println(em1.getAlternateEmail());
-        em1.setPassword("sdhsdthr");
-
-
+        System.out.println("Alternate email:"+email.getAlternateEmail()+"\n");
+        email.setAlternateEmail("");
+        email.setAlternateEmail("jhonsmith@me.com");
+        System.out.println("Alternate Email: " + email.getAlternateEmail() +"\n");
+        email.setPassword("asfgassdg");
+        email.setPassword(("A123bbA_"));
+        email.setDefaultMailboxCapacity(100);
+        email.setDefaultMailboxCapacity(600);
+        System.out.println(email.getMailboxCapacity());
+        System.out.println(email.getEmail());
     }
 
 }

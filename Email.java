@@ -100,17 +100,16 @@ public class Email {
     public void setPassword(String newPassword){
         if(!newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_]).{8,}")){
             System.out.println("""
-                    ERROR: Please enter a valid password with
+                    ERROR: Please enter a valid password with:
                     At least 1 uppercase letter
                     At least 1 lowercase letter
                     At least 1 special character: !@#$%^&*_
                     At least 8 characters long
-                    
                     """);
             System.out.println("Password not changed!\n");
         }else {
             password = newPassword;
-            System.out.println("Password changed successfully\n");
+            System.out.println("Password successfully changed!\n");
         }
     }
     // Getters
@@ -118,8 +117,8 @@ public class Email {
     public String getEmail(){
         return email;
     }
-    public int getMailboxCapacity(){
-        return defaultMailboxCapacity;
+    public String getMailboxCapacity(){
+        return defaultMailboxCapacity + "Mb";
     }
 
     public String getAlternateEmail(){
@@ -129,7 +128,7 @@ public class Email {
     public String showInfo(){
         return "DISPLAY NAME: " + firstName + " " + lastName +
                 "\nCOMPANY EMAIL:" + email +
-                "\nMAILBOX CAPACITY: " + defaultMailboxCapacity;
+                "\nMAILBOX CAPACITY: " + defaultMailboxCapacity + "\n";
     }
 
 }
