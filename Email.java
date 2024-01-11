@@ -17,7 +17,7 @@ public class Email {
             this.firstName = firstName;
             this.lastName = lastName;
         } else {
-            System.out.println("Error: First name and last name can't be null");
+            System.out.println("Error: First name and last name can't be null\n");
         }
         defaultMailboxCapacity = 500;
 
@@ -27,13 +27,11 @@ public class Email {
         // Generate random password
         int defaultPassLength = 8;
         this.password = randomPassword(defaultPassLength);
-        System.out.println("Your password is: " + password);
 
         // Generate email
         String companySuffix = "company.com";
         email = (firstName + (".")+ lastName + "@" + (department.isEmpty() ? companySuffix : department + "."
                 + companySuffix)).toLowerCase();
-        System.out.println("Your email is: "+ email);
 
     }
 
@@ -83,7 +81,7 @@ public class Email {
         if(capacity > 500){
             this.defaultMailboxCapacity = capacity;
         }else{
-            System.out.println("Error: Capacity cannot go under 500Mb");
+            System.out.println("Error: Capacity cannot go under 500Mb\n");
         }
     }
     // Set the alternate email
@@ -92,7 +90,7 @@ public class Email {
 
         // Update instance variable only if the input is valid
         if(!alternateEmail.matches("^[a-z].*[0-9._]*@.[a-z]*\\.[a-z]{2,3}$")){
-            System.out.println("ERROR: Invalid alternate email address.");
+            System.out.println("ERROR: Invalid alternate email address.\n");
 
         }else {
             this.alternateEmail = alternateEmail;
@@ -107,11 +105,12 @@ public class Email {
                     At least 1 lowercase letter
                     At least 1 special character: !@#$%^&*_
                     At least 8 characters long
+                    
                     """);
-            System.out.println("Password not changed!");
+            System.out.println("Password not changed!\n");
         }else {
             password = newPassword;
-            System.out.println("Password changed successfully");
+            System.out.println("Password changed successfully\n");
         }
     }
     // Getters
