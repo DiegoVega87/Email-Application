@@ -7,10 +7,9 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private String email;
+    private final String email;
     private int defaultMailboxCapacity;
     private String alternateEmail;
-    private  int defaultPassLength;
 
     // Constructor to receive the first name and last name
     public Email(String firstName, String lastName) {
@@ -20,12 +19,13 @@ public class Email {
         } else {
             System.out.println("Error: First name and last name can't be null");
         }
-        defaultPassLength = 8;
         defaultMailboxCapacity = 500;
 
         // Set the department
         setDepartment();
-        System.out.println("Department: " + this.department);
+
+        // Generate random password
+        int defaultPassLength = 8;
         this.password = randomPassword(defaultPassLength);
         System.out.println("Your password is: " + password);
 
@@ -89,10 +89,14 @@ public class Email {
     // Set the alternate email
 
     public void setAlternateEmail(String alternateEmail) {
-        while (!alternateEmail.matches("^[a-z].*[0-9._]*@.[a-z]*\\.[a-z]{2,3}$")){
-            System.out.println("ERROR: Invalid alternate email address.\nPlease provide a valid one");
+
+        // Update instance variable only if the input is valid
+        if(!alternateEmail.matches("^[a-z].*[0-9._]*@.[a-z]*\\.[a-z]{2,3}$")){
+            System.out.println("ERROR: Invalid alternate email address.");
+
+        }else {
+            this.alternateEmail = alternateEmail;
         }
-        this.alternateEmail = alternateEmail;
     }
     // Change the password
     public void setPassword(String newPassword){
@@ -112,19 +116,21 @@ public class Email {
     }
     // Getters
 
-    public String getFirstName(){
-        return firstName;
-    }
-
-    public String getLastName(){
-        return lastName;
-    }
-
     public String getEmail(){
         return email;
     }
     public int getMailboxCapacity(){
         return defaultMailboxCapacity;
+    }
+
+    public String getAlternateEmail(){
+        return alternateEmail == null  ? "No alternate email set yet" : alternateEmail;
+    }
+
+    public String showInfo(){
+        return "DISPLAY NAME: " + firstName + " " + lastName +
+                "\nCOMPANY EMAIL:" + email +
+                "\nMAILBOX CAPACITY: " + defaultMailboxCapacity;
     }
 
 }
