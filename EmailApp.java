@@ -1,4 +1,3 @@
-
 public class EmailApp {
 
     public static void main(String[] args) {
@@ -8,7 +7,7 @@ public class EmailApp {
         System.out.println("Alternate email:"+email.getAlternateEmail()+"\n");
         email.setAlternateEmail("");
         email.setAlternateEmail("jhonsmith@me.com");
-        System.out.println("Alternate Email: " + email.getAlternateEmail() +"\n");
+        System.out.println("Alternate src.Email: " + email.getAlternateEmail() +"\n");
         email.setPassword("asfgassdg");
         email.setPassword(("A123bbA_"));
         email.setDefaultMailboxCapacity(100);
