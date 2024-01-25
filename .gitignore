@@ -398,5 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 .idea/
-.out/
+*.out/
 .vscode/
