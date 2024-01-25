@@ -1,4 +1,4 @@
-# Email Application
+# src.Email Application
 
 ## The application should do:
 
