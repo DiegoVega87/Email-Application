@@ -6,4 +6,4 @@
 - Determine the department (sales, development, accounting)
 - Generate a random string for a password
 - Allow users to change the password, define the mailbox capacity, and set an alternative email address
-- Conversely, it should display the user's name, email, and mailbox capacity.
+- It should also allow to display user's name, email, and mailbox capacity.
